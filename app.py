@@ -5,7 +5,7 @@ from PIL import Image
 from googletrans import Translator
 
 st.title('Análisis de Sentimiento')
-image = Image.open('emoticones.jpg')
+image = Image.open('intensa.jpg')
 st.image(image)
 st.subheader("Por favor escribe en el campo de texto la frase que deseas analizar")
 
@@ -35,7 +35,13 @@ with st.expander('Analizar texto'):
         x=round(blob.sentiment.polarity,2)
         if x > 0.0 and x <=1.0:
             st.write( 'Es un sentimiento Positivo 😊')
+          with open(´Happy Dog.json´) as sourse:
+            animation=json.load(sourse)
+          st.lottie(animation,width =350)
         elif x >=-1 and x <= 0:
             st.write( 'Es un sentimiento Negativo 😔')
+          with open(´Sad_dog.json´) as sourse:
+            animation=json.load(sourse)
+          st.lottie(animation,width =350)
         else:
             st.write( 'Es un sentimiento Neutral 😐')
